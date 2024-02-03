@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 // Wildcard/404 route
 app.get('*', (req, res) => {
-    res.status('<h1>404 Page</h1>')
+    res.status(404).send('<h1>404 Page</h1>')
 })
 
 app.listen(process.env.PORT)
