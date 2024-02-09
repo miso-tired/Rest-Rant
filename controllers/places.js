@@ -1,9 +1,27 @@
 const router = require('express').Router()
 
+let places = []
+
 // GET /places/new
 router.get ('/new', (req, res) => {
     res.render('places/new')
 })
+
+// POST /places
+    router.post('/', (req, res) => {
+    const newPlace = { ...req.body };
+    if (!newPlace.pic) {
+        newPlace.pic = 'https://via.placeholder.com/300';
+    }
+    if (!newPlace.city) {
+        newPlace.city = 'Unknown';
+    }
+    if (!newPlace.state) {
+        newPlace.state = 'USA';
+    }
+    places.push(newPlace);
+    res.redirect('/places');
+});
 
 // GET /places
 router.get('/', (req, res) => {
