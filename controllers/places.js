@@ -1,6 +1,5 @@
 const router = require('express').Router()
-
-let places = []
+const places = require('../models/placesarray.js')
 
 // GET /places/new
 router.get ('/new', (req, res) => {
