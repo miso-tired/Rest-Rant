@@ -7,20 +7,36 @@ router.get ('/new', (req, res) => {
 })
 
 // POST /places
-    router.post('/', (req, res) => {
-    const newPlace = { ...req.body };
-    if (!newPlace.pic) {
-        newPlace.pic = 'https://via.placeholder.com/300';
+//     router.post('/', (req, res) => {
+//     const newPlace = { ...req.body };
+//     if (!newPlace.pic) {
+//         newPlace.pic = 'https://via.placeholder.com/300';
+//     }
+//     if (!newPlace.city) {
+//         newPlace.city = 'Unknown';
+//     }
+//     if (!newPlace.state) {
+//         newPlace.state = 'USA';
+//     }
+//     places.push(req.body);
+//     res.redirect('/places');
+// });
+
+router.post('/', (req, res) => {
+    console.log(req.body)
+    if (!req.body.pic) {
+      // Default image if one is not provided
+      req.body.pic = 'http://placekitten.com/400/400'
     }
-    if (!newPlace.city) {
-        newPlace.city = 'Unknown';
+    if (!req.body.city) {
+      req.body.city = 'Anytown'
     }
-    if (!newPlace.state) {
-        newPlace.state = 'USA';
+    if (!req.body.state) {
+      req.body.state = 'USA'
     }
-    places.push(newPlace);
-    res.redirect('/places');
-});
+    res.send('POST /places')
+  })
+  
 
 // GET /places
 router.get('/', (req, res) => {
