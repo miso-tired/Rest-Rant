@@ -7,28 +7,12 @@ router.get ('/new', (req, res) => {
 })
 
 // POST /places
-//     router.post('/', (req, res) => {
-//     const newPlace = { ...req.body };
-//     if (!newPlace.pic) {
-//         newPlace.pic = 'https://via.placeholder.com/300';
-//     }
-//     if (!newPlace.city) {
-//         newPlace.city = 'Unknown';
-//     }
-//     if (!newPlace.state) {
-//         newPlace.state = 'USA';
-//     }
-//     places.push(req.body);
-//     res.redirect('/places');
-// });
-
 router.post('/', (req, res) => {
     if (!req.body.pic) {
-      // Default image if one is not provided
       req.body.pic = 'http://placekitten.com/400/400'
     }
     if (!req.body.city) {
-      req.body.city = 'Anytown'
+      req.body.city = 'Random City'
     }
     if (!req.body.state) {
       req.body.state = 'USA'
@@ -37,26 +21,14 @@ router.post('/', (req, res) => {
     res.redirect('/places')
   })
   
-
 // GET /places
 router.get('/', (req, res) => {
-    let places = [{
-        name: 'H-Thai-ML',
-        city: 'Seattle',
-        state: 'WA',
-        cuisines: 'Thai, Pan-Asian',
-        pic: '/images/Thai-Restaurant.jpg'
-      }, {
-        name: 'Coding Cat Cafe',
-        city: 'Phoenix',
-        state: 'AZ',
-        cuisines: 'Coffee, Bakery',
-        pic: '/images/Coding-Cat.jpg'
-      }]
       res.render('places/index', { places })
   })
-  
-  router.get('/:id', (req, res) => {
+
+
+// Error 404 Page
+router.get('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
       res.render('error404')
@@ -65,9 +37,8 @@ router.get('/', (req, res) => {
         res.render('error404')
     }
     else {
-      res.render('places/show', { place: places[id] })
+      res.render('places/show', { place: places[id], id })
     }
-  })
-  
+})
 
 module.exports = router

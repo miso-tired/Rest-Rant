@@ -3,11 +3,11 @@ module.exports = [{
     city: 'Seattle',
     state: 'WA',
     cuisines: 'Thai, Pan-Asian',
-    pic: '/images/h-thai-ml-tables.jpg'
+    pic: './images/Thai-Restaurant.jpg'
 }, {
     name: 'Coding Cat Cafe',
     city: 'Phoenix',
     state: 'AZ',
     cuisines: 'Coffee, Bakery',
-    pic: '/images/coffee-cat.jpg'
+    pic: './images/Coding-Cat.jpg'
 }]

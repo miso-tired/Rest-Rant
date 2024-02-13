@@ -38,3 +38,15 @@ nav a:hover {
     color: maroon;
     text-decoration: none;
 }
+
+#rating {
+    text-align: center;
+}
+
+#description {
+    text-align: center;
+}
+
+#comments {
+    text-align: center;
+}
