@@ -40,13 +40,16 @@ nav a:hover {
 }
 
 #rating {
-    text-align: center;
+    text-align: right;
+    margin-right: 2em;
 }
 
 #description {
-    text-align: center;
+    text-align: right;
+    margin-right: 2em;
 }
 
 #comments {
-    text-align: center;
+    text-align: right;
+    margin-right: 2em;
 }

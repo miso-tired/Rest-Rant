@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const places = require('../models/placesarray.js')
+const express = require('express')
 
 // GET /places/new
 router.get ('/new', (req, res) => {
@@ -41,6 +42,46 @@ router.get('/:id', (req, res) => {
     }
 })
 
+
+// PUT Route
+router.put('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+      res.render('error404')
+  }
+  else if (!places[id]) {
+      res.render('error404')
+  }
+  else {
+      if (!req.body.pic) {
+        req.body.pic = 'http://placekitten.com/400/400'
+      }
+      if (!req.body.city) {
+        req.body.city = 'Unkown'
+      }
+      if (!req.body.city) {
+        req.body.state = 'USA'
+      }
+      places[id] = req.body
+      res.redirect(`/places/${id}`)
+  }
+})
+
+// EDIT Route
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  } 
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    res.render('places/edit', { place: places[id] })
+  }
+})
+
+// DELETE Route
 router.delete('/:id', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
